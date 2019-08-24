@@ -536,7 +536,10 @@ if(FREECAD_LIBPACK_USE)
 
 # -------------------------------- PyCXX --------------------------------
 
-    find_package(PyCXX REQUIRED)
+    #find_package(PyCXX REQUIRED)
+	set(PYTHON_EXECUTABLE ${FREECAD_LIBPACK_DIR}/bin/python.exe)
+	set(PYTHON_INCLUDE_DIR "${FREECAD_LIBPACK_DIR}/bin/include")
+	set(PYTHON_LIBRARY ${FREECAD_LIBPACK_DIR}/bin/libs/python36.lib)
 
 # -------------------------------- Swig ----------------------------------
 
