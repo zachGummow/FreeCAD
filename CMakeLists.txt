@@ -1577,10 +1577,10 @@ if(MSVC)
 
         if(COPY_LIBPACK_BIN_TO_BUILD)
             if(FREECAD_COPY_LIBPACK_BIN_TO_BUILD)
-                message("=======================================\n"
+                message(STATUS "=======================================\n"
                         "Copying libpack 'bin' directory to build directory.\n")
                 file(COPY ${FREECAD_LIBPACK_DIR}/bin DESTINATION ${CMAKE_BINARY_DIR})
-                message("... done copying libpack 'bin' directory.\n=======================================\n")
+                message(STATUS "... done copying libpack 'bin' directory.\n=======================================\n")
             endif()
         endif()
 
@@ -1598,17 +1598,17 @@ if(MSVC)
         endif(FREECAD_INSTALL_DEPEND_DIRS)
 		
 		if(CREATE_LIBPACK_REFERENCE_BATCH)
-			message("=======================================\n"
+			message(STATUS "=======================================\n"
                         "Creating FreeCAD.bat.\n")
 			file(COPY ${FREECAD_LIBPACK_DIR}/bin/qt.conf DESTINATION ${CMAKE_BINARY_DIR}/bin)
 			file(COPY ${FREECAD_LIBPACK_DIR}/bin/QtWebEngineProcess.exe DESTINATION ${CMAKE_BINARY_DIR}/bin)
 			file(WRITE ${CMAKE_BINARY_DIR}/bin/FreeCAD.bat "set PATH=${FREECAD_LIBPACK_DIR}/bin;%PATH%\nstart FreeCAD.exe --write-log %1 %2 %3")
-			message("... done creating FreeCAD.bat to 'bin' directory.\n=======================================\n")
+			message(STATUS "... done creating FreeCAD.bat to 'bin' directory.\n=======================================\n")
 		endif(CREATE_LIBPACK_REFERENCE_BATCH)
     endif(FREECAD_LIBPACK_USE AND LIBPACK_FOUND)
 endif()
 
 # Print message to start build process
-message("=================================================\n"
+message(STATUS "=================================================\n"
         "Now run 'cmake --build ${CMAKE_BINARY_DIR}' to build ${PROJECT_NAME}\n"
         "=================================================\n")
