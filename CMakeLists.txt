@@ -295,6 +295,7 @@ if(MSVC)
 		FIND_LIBPACK()
 		if (LIBPACK_FOUND)
 			set(COPY_LIBPACK_BIN_TO_BUILD OFF)
+			option(FREECAD_COPY_DEPEND_DIRS_TO_BUILD "Copy smaller libpack dependency directories to build directory." ON)
 			#Create a batch file that passes the libpack directory as a path to FreeCAD. 
 			option(CREATE_LIBPACK_REFERENCE_BATCH "Create a batch file to pass the libpack directory as a path to FreeCAD." ON)
 			# Create install commands for dependencies for INSTALL target in FreeCAD solution
@@ -302,7 +303,7 @@ if(MSVC)
 				in the FreeCAD solution." ON)
 			# Copy libpack smaller dependency folders to build folder per user request - if non-existent at destination
 			if (NOT EXISTS ${CMAKE_BINARY_DIR}/bin/imageformats/qsvg.dll)
-				option(FREECAD_COPY_DEPEND_DIRS_TO_BUILD "Copy smaller libpack dependency directories to build directory." OFF)
+				set(FREECAD_COPY_DEPEND_DIRS_TO_BUILD OFF)
 			endif()
 			# Copy libpack 'bin' directory contents to build 'bin' per user request - only IF NOT EXISTS already
 			if (NOT EXISTS ${CMAKE_BINARY_DIR}/bin/DLLs)
